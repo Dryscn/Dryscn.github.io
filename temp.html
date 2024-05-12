@@ -39,9 +39,6 @@
 
         // Sending data to Google Analytics
         gtag('event', 'submission', {
-            'event_category': 'Contact Form',
-            'event_label': 'Form Submission',
-            'value': '1',  // Optional: A static value or a variable to quantify the event (e.g., a score or a count)
             'name': name,  // Note: Adjust this to not send personal data directly if you are concerned about privacy.
             'email': email,  // Google Analytics generally shouldn't store PII
             'phone': phone  // Consider how to handle and store this information
