@@ -16,17 +16,41 @@
 </head>
 <body>
     <h1>Fill Out the Form</h1>
-    <form onsubmit="event.preventDefault(); alert('Form Submitted!'); window.location.href='index.html';">
+    <form id="contactForm">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required style="width: 95%; padding: 8px;"><br><br>
+        <input type="text" id="name" name="name" required><br><br>
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required style="width: 95%; padding: 8px;"><br><br>
+        <input type="email" id="email" name="email" required><br><br>
 
         <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" style="width: 95%; padding: 8px;"><br><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
 
         <input type="submit" value="Submit">
     </form>
+
+    <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
+
+        // Sending data to Google Analytics
+        gtag('event', 'submission', {
+            'event_category': 'Contact Form',
+            'event_label': 'Form Submission',
+            'value': '1',  // Optional: A static value or a variable to quantify the event (e.g., a score or a count)
+            'name': name,  // Note: Adjust this to not send personal data directly if you are concerned about privacy.
+            'email': email,  // Google Analytics generally shouldn't store PII
+            'phone': phone  // Consider how to handle and store this information
+        });
+
+        alert('Form Submitted! Thank you.'); // Feedback for the user
+        this.reset(); // Reset the form fields
+        window.location.href = 'index.html';
+    });
+    </script>
 </body>
 </html>
