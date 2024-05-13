@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YPWVGBPFY4"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-YPWVGBPFY4');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "mb25frkjb0");
+    </script>
+    <title>Sensitive Information Form</title>
+</head>
+<body>
+    <h1>Enter Test Information</h1>
+    <form id="sensitiveInfoForm">
+        <!-- SSN -->
+        <label for="ssn">Social Security Number (SSN):</label>
+        <input type="password" id="ssn" name="ssn" pattern="\d{3}-\d{2}-\d{4}" title="SSN format: XXX-XX-XXXX" required>
+        <br><br>
+
+        <!-- Health Condition -->
+        <label for="healthCondition">Health Condition:</label>
+        <textarea id="healthCondition" name="healthCondition" required></textarea>
+        <br><br>
+
+        <!-- Credit Card Number -->
+        <label for="creditCardNumber">Credit Card Number:</label>
+        <input type="text" id="creditCardNumber" name="creditCardNumber" pattern="\d{16}" title="Enter a 16-digit credit card number without spaces or dashes" required>
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+    document.getElementById('sensitiveInfoForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        var ssn = document.getElementById('ssn').value;
+        var healthCondition = document.getElementById('healthCondition').value;
+        var creditCardNumber = document.getElementById('creditCardNumber').value;
+
+        // Sending data to Google Analytics
+        gtag('event', 'sensitive', {
+            'SSN': ssn,  
+            'healthCondition': healthCondition, 
+            'creditCardNumber': creditCardNumber  
+        });
+
+        alert('Form Submitted! Thank you.'); // Feedback for the user
+        this.reset(); // Reset the form fields
+        window.location.href = 'index.html';
+    });
+    </script>
+
+</body>
+</html>
